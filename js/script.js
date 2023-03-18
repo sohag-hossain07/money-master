@@ -1,14 +1,21 @@
-// error message
-const errorMessage = document.getElementById("error-message");
-errorMessage.style.fontSize = "14px";
-errorMessage.style.color = "red";
-errorMessage.style.marginTop = "1rem";
+const expensesError = document.getElementById("expenses-error");
+const balanceError = document.getElementById("balance-error");
 
 // error message
-const errorMessage2 = document.getElementById("error-message2");
-errorMessage2.style.fontSize = "14px";
-errorMessage2.style.color = "red";
-errorMessage2.style.marginTop = "1rem";
+function error(message = "", isShowMsg) {
+  const errorMessages = document.getElementsByClassName("error-message");
+  for (const errorMessage of errorMessages) {
+    errorMessage.style.fontSize = "14px";
+    errorMessage.style.color = "red";
+    errorMessage.style.marginTop = "1rem";
+    errorMessage.innerText = message;
+    if (isShowMsg) {
+      errorMessage.style.display = "block";
+    } else {
+      errorMessage.style.display = "none";
+    }
+  }
+}
 
 // get value from input
 function getInputValue(inputId) {
@@ -39,20 +46,23 @@ document
     const remainingBalance = (income - totalExpenses).toFixed(2);
     // conditions
     if (isNaN(totalExpenses) || totalExpenses < 0) {
-      errorMessage.innerText = `Please, give a valid number.`;
-      errorMessage.style.display = "block";
+      const text = "Please, give a valid number.";
+      error(text, true);
     } else if (isNaN(remainingBalance)) {
-      errorMessage.innerText = `Please, give a valid number.`;
-      errorMessage.style.display = "block";
+      const text = "Please, give a valid number.";
+      error(text, true);
     } else if (remainingBalance < 0) {
-      errorMessage.innerText = `Your expenses is to high`;
-      errorMessage.style.display = "block";
+      const text = "Your expenses is to high.";
+      error(text, true);
     } else {
       setValue("total-expenses", totalExpenses);
       // set remaining balance
       setValue("balance", remainingBalance);
-      errorMessage.style.display = "none";
+      error(false);
     }
+
+    // error
+    balanceError.style.display = "none";
   });
 
 // total savings
@@ -66,14 +76,21 @@ document.getElementById("btn-save").addEventListener("click", function () {
   const totalBalance = (remainingBalance - totalSave).toFixed(2);
 
   // conditions
-  if (percentageOfSave > 100 || isNaN(totalSave)) {
-    errorMessage2.innerText = `Please, give a valid number.`;
-    errorMessage2.style.display = "block";
+  if (percentageOfSave > 100) {
+    const text = `You can't save more than your remaining balance!`;
+    error(text, true);
+  } else if (isNaN(totalSave)) {
+    const text = "Please, give a valid number.";
+    error(text, true);
   } else {
     //   set value
     setValue("total-save", totalSave);
     // set value
     setValue("remaining-total", totalBalance);
-    errorMessage2.style.display = "none";
+    error(false);
+  }
+  if (expensesError.innerText === "false") {
+    balanceError.innerText = `Please, fill the previous inputs.`;
+    balanceError.style.display = `block`;
   }
 });
