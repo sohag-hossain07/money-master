@@ -89,8 +89,4 @@ document.getElementById("btn-save").addEventListener("click", function () {
     setValue("remaining-total", totalBalance);
     error(false);
   }
-  if (expensesError.innerText === "false") {
-    balanceError.innerText = `Please, fill the previous inputs.`;
-    balanceError.style.display = `block`;
-  }
 });
