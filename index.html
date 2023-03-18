@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>money master</title>
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css" />
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <h1 class="text-center my-5">Money Master!!</h1>
+    <!-- calculation section -->
+    <div class="container">
+      <section class="row g-lg-5 mb-5">
+        <div class="col col-12 col-lg-7">
+          <img
+            class="img-fluid banner-image"
+            src="./images/finance.webp"
+            alt="image of finance"
+          />
+        </div>
+        <div class="col col-12 col-lg-5 text-center">
+          <!-- income -->
+          <div class="mt-3">
+            <p class="text-center">Income</p>
+            <label class="flex" for="income"
+              >Income: <input type="text" id="income"
+            /></label>
+          </div>
+
+          <!-- monthly expenses -->
+          <div class="mt-3">
+            <label class="flex" for="food"
+              >Food: <input type="text" id="food"
+            /></label>
+            <label class="flex" for="rent"
+              >Rent: <input type="text" id="rent"
+            /></label>
+            <label class="flex" for="clothes"
+              >Clothes: <input type="text" id="clothes"
+            /></label>
+            <!-- calculate button -->
+            <button id="btn-total-expenses" class="button">Calculate</button>
+
+            <!-- total expenses -->
+            <p class="text-center mt-4">
+              Total Expenses: <span id="total-expenses">0.00</span> Tk
+            </p>
+            <p class="text-center mb-5">
+              Balance: <span id="balance">0.00</span> Tk
+            </p>
+          </div>
+
+          <!-- savings -->
+          <div
+            class="d-flex align-items-end align-items-sm-center justify-content-center mb-5"
+          >
+            <label for="save">Save: <input type="text" id="save" /></label>
+            <span class="percentage">%</span>
+            <!-- saving button -->
+            <button id="btn-save" class="button">Save</button>
+          </div>
+
+          <!-- total savings and remaining balance -->
+          <p class="text-center mt-4">
+            Saving Amount: <span id="total-save">0.00</span> Tk
+          </p>
+          <p class="text-center mt-3">
+            Remaining Balance: <span id="remaining-total">0.00</span> Tk
+          </p>
+        </div>
+      </section>
+    </div>
+    <!-- js -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
